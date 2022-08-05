@@ -1,13 +1,23 @@
+
 import React, { useContext } from "react";
 import { UserContext } from "../../utils/useContext";
+import { getClass } from "../../utils";
+
+import Image from "../../components/Image/Image";
 function Photos() {
-  // const context = useContext(UserContext);
+  const context = useContext(UserContext);
+
+  const imgs = context.photos.map((img, i) => {
+      return (
+          <Image className={getClass(i)} key={i} img={img.url}/>
+      )
+  })
   return (
-    <>
+    <div className="container">
       <main className="photos">
-        <h1>Images go here</h1>
+        {imgs}
       </main>
-    </>
+    </div>
   );
 }
 
