@@ -1,6 +1,7 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { UserContext } from "../../utils/useContext";
 function Photos() {
+  // const context = useContext(UserContext);
   return (
     <>
       <main className="photos">
