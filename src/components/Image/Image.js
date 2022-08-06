@@ -1,8 +1,4 @@
-import React from "react";
-function Image(props) {
-
-  const [hovered, setHovered] = React.useState(false)
-
+import PropTypes from "prop-types";
   function onEnter() {
     setHovered(prevState => !prevState)
   }
