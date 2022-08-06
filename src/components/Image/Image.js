@@ -14,7 +14,7 @@ function Image(props) {
     <>
       <div onMouseEnter={onEnter} onMouseLeave={onLeave}  className={`${props.className} image-container`}>
         <img src={props.img} alt="pic" className="image-grid" />
-        {hovered && <i className="ri-heart-line favorite"></i>}
+        {(hovered || props.isFavorite) && <i onClick={() => props.toggle(props.id)} className={`${props.isFavorite ? 'ri-heart-fill' : 'ri-heart-line'} favorite`}></i>}
         {hovered && <i className="ri-add-circle-line cart"></i>}
       </div>
     </>

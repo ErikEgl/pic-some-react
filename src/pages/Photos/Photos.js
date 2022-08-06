@@ -9,7 +9,7 @@ function Photos() {
 
   const imgs = context.photos.map((img, i) => {
       return (
-          <Image className={getClass(i)} key={i} img={img.url}/>
+          <Image isFavorite={img.isFavorite} toggle={context.toggleFavorite} id={img.id} className={getClass(i)} key={i} img={img.url}/>
       )
   })
   return (

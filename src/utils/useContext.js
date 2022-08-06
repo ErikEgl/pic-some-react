@@ -13,9 +13,19 @@ function AppContextProvider(props) {
             setPhotos(data)
         });
     }, [])
-    console.log(photos);
+
+    function toggleFavorite(id) {
+        setPhotos(prevState => {
+            return prevState.map(item => {
+                return (item.id === id ? 
+                { ...item,
+                isFavorite: !item.isFavorite } :
+                item)
+            })
+        })
+    }
   return (
-    <UserContext.Provider value={{photos}}>
+    <UserContext.Provider value={{photos, toggleFavorite}}>
         {props.children}
     </UserContext.Provider>
   );
