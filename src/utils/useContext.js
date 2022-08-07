@@ -9,7 +9,7 @@ function AppContextProvider(props) {
 
   useEffect(() => {
     const url =
-      "https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json";
+      "https://raw.githubusercontent.com/ErikEgl/data-json/main/pic-some.json";
     fetch(url)
       .then((response) => {
         return response.json();
