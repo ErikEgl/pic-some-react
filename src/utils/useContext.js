@@ -4,6 +4,8 @@ const UserContext = createContext();
 function AppContextProvider(props) {
   const [photos, setPhotos] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [ordering, setOrdering] = useState(false);
+
 
   useEffect(() => {
     const url =
@@ -34,9 +36,18 @@ function AppContextProvider(props) {
       });
     });
   }
+
+  function placeOrder() {
+    setOrdering(prevState => !prevState)
+    setTimeout(() => {
+      setCartItems([])
+      setOrdering(prevState => !prevState)
+      alert("Fake order is placed!");
+    }, 3000)
+  }
   return (
     <UserContext.Provider
-      value={{ photos, toggleFavorite, toggleCartItem, cartItems }}
+      value={{ photos, toggleFavorite, toggleCartItem, cartItems, placeOrder, ordering }}
     >
       {props.children}
     </UserContext.Provider>
