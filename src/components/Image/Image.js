@@ -1,22 +1,17 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { UserContext } from "../../utils/useContext";
+import useHover from "../../hooks/useHover";
 function Image({className, img}) {
-  const [hovered, setHovered] = React.useState(false);
   const {toggleFavorite, toggleCartItem, cartItems} = useContext(UserContext);
-  function onEnter() {
-    setHovered((prevState) => !prevState);
-  }
-  function onLeave() {
-    setHovered((prevState) => !prevState);
-  }
+  const [hovered, hoverElem] = useHover()
+
   const thisEl = cartItems.find(el => el.id === img.id)
   return (
     <>
       <div
-        onMouseEnter={onEnter}
-        onMouseLeave={onLeave}
         className={`${className} image-container`}
+        ref={hoverElem}
       >
         <img src={img.url} alt="pic" className="image-grid" />
         {(hovered || img.isFavorite) && (
