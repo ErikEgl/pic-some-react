@@ -1,22 +1,24 @@
 import { useState, useRef, useEffect } from "react";
 function useHover() {
-  const hoverElem = useRef(null);
-  const [hovered, setHovered] = useState(false);
-  function onEnter() {
-    setHovered(true);
-  }
-  function onLeave() {
-    setHovered(false);
-  }
-
-  useEffect(() => {
-    hoverElem.current.addEventListener("mouseenter", onEnter);
-    hoverElem.current.addEventListener("mouseleave", onLeave);
-
-    return () => {
-      hoverElem.current.removeEventListener("mouseenter", onEnter);
-      hoverElem.current.removeEventListener("mouseleave", onLeave);
-    };
+    const [hovered, setHovered] = useState(false);
+    const hoverElem = useRef(null);
+    function onEnter() {
+        setHovered(true);
+    }
+    function onLeave() {
+        setHovered(false);
+    }
+    
+    useEffect(() => {
+        const current = hoverElem.current
+    if (current) {
+        current.addEventListener('mouseenter',onEnter);
+        current.addEventListener('mouseleave',onLeave);
+      }
+      return () => {
+        current.removeEventListener('mouseenter',onEnter);
+        current.removeEventListener('mouseleave',onLeave);
+      };
   }, []);
   return [hovered, hoverElem];
 }
