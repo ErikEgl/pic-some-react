@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 function Header() {
   const context = useContext(UserContext);
-  console.log(context);
   return (
     <header>
       <div className="container">

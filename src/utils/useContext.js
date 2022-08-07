@@ -17,7 +17,7 @@ function AppContextProvider(props) {
       });
   }, []);
 
-  function toggleCartImage(obj) {
+  function toggleCartItem(obj) {
     if (cartItems.some((e) => e.url === obj.url)) {
       setCartItems(prevCartItems => prevCartItems.filter(item => item.url !== obj.url));
       return;
@@ -36,7 +36,7 @@ function AppContextProvider(props) {
   }
   return (
     <UserContext.Provider
-      value={{ photos, toggleFavorite, toggleCartImage, cartItems }}
+      value={{ photos, toggleFavorite, toggleCartItem, cartItems }}
     >
       {props.children}
     </UserContext.Provider>
