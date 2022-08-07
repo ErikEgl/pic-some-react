@@ -16,11 +16,13 @@ function AppContextProvider(props) {
         });
     }, [])
 
-    function addImageToTheCart(obj) {
-        if (cartItems.some(e => e.url === obj.url)) {
-            return
+  function toggleCartImage(obj) {
+    if (cartItems.some((e) => e.url === obj.url)) {
+      setCartItems(prevCartItems => prevCartItems.filter(item => item.url !== obj.url));
+      return;
         }
-        setCartItems(prevObjArray => [...prevObjArray, obj])
+
+    setCartItems((prevObjArray) => [...prevObjArray, obj]);
     }
     function toggleFavorite(id) {
         setPhotos(prevState => {
@@ -33,7 +35,9 @@ function AppContextProvider(props) {
         })
     }
   return (
-    <UserContext.Provider value={{photos, toggleFavorite, addImageToTheCart, cartItems}}>
+    <UserContext.Provider
+      value={{ photos, toggleFavorite, toggleCartImage, cartItems }}
+    >
         {props.children}
     </UserContext.Provider>
   );

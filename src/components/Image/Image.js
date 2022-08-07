@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { UserContext } from "../../utils/useContext";
 function Image({className, img}) {
   const [hovered, setHovered] = React.useState(false);
-  const {toggleFavorite, addImageToTheCart, cartItems} = useContext(UserContext);
+  const {toggleFavorite, toggleCartImage, cartItems} = useContext(UserContext);
   function onEnter() {
     setHovered((prevState) => !prevState);
   }
@@ -23,7 +23,7 @@ function Image({className, img}) {
           <i onClick={() => toggleFavorite(img.id)} className={`${img.isFavorite ? "ri-heart-fill" : "ri-heart-line"} favorite`}></i>
         )}
         {(hovered || thisEl) && (
-          <i onClick={() => addImageToTheCart(img)} className={`${thisEl ? "ri-shopping-cart-fill" : "ri-add-circle-line"} cart`}></i>
+          <i onClick={() => toggleCartImage(img)} className={`${thisEl ? "ri-shopping-cart-fill" : "ri-add-circle-line"} cart`}></i>
         )}
       </div>
     </>
