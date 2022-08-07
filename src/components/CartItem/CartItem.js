@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import PropTypes from "prop-types"
 import { UserContext } from "../../utils/useContext";
 
 function CartItem({item, price}) {
@@ -21,6 +22,12 @@ function CartItem({item, price}) {
             <p>{price.toLocaleString("en-US", {style: "currency", currency: "USD"})}</p>
         </div>
     )
+}
+
+CartItem.propTypes = {
+    item: PropTypes.shape({
+        url: PropTypes.string.isRequired
+    })
 }
 
 export default CartItem
