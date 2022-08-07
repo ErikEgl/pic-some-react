@@ -10,6 +10,7 @@ function App() {
             <Header />
             <Routes >
                 <Route exact path="/" element={<Photos />} />
+                <Route exact path="/pic-some-react" element={<Photos />} />
                 <Route path="/cart" element={<Cart />} />
             </Routes>
         </div>
